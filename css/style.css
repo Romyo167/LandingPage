@@ -74,8 +74,8 @@ nav{
    border-radius: 25px;
    margin: 15px;
    position: fixed;
-   width:250px;
-   height:200px;
+   width:200px;
+   height:300px;
    left:30px;
    top:200px;
 }
@@ -106,19 +106,8 @@ li{
 	line-height: 23px;
 }
 
-.content > section > h2{
-	padding-left: 25px;
-	padding-right: 25px;
-}
-
-.content > section > section > h3{
-	padding-left: 25px;
-	padding-right: 25px;
-}
-
-.content > section > section> p{
-	padding-left: 25px;
-	padding-right: 25px;
+section{
+	padding : 15px;
 }
 
 nav > h3{
