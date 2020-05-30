@@ -4,7 +4,7 @@
 let links;
 let tgtdefault;  // The previous target which I need to remove highlihting
 let linkdefault; // The previous link (li item) which I need to remove highlighting
-
+const links_To_Jump = new Array ("#EP1" , "#EP2" , "#WB1" , "#WB2");
 /**
  * End Global Variables
  * Start Helper Functions
@@ -13,27 +13,24 @@ let linkdefault; // The previous link (li item) which I need to remove highlight
 
 function clearactivefromsection(){
   if(typeof tgtdefault !== "undefined")
-  tgtdefault.style.border = "none";   
+  tgtdefault.classList.remove('activeSection'); 
+
 }
 
 function clearactivefromli(){
   if(typeof linkdefault !== "undefined"){
-    linkdefault.style.backgroundColor = "rgb(184,130,204)";
-    linkdefault.style.border = "none";
+   linkdefault.classList.remove('activeNavli');
   }
 }
 
 
 function activeThechosenli(lk){
-    lk.style.backgroundColor = "rgb(50,130,204)";
-    lk.style.border = "5px solid gray";
-    lk.style.borderRadius = "10px";
-    lk.style.width = "40%";
+    lk.classList.add('activeNavli');
 }
  
 function activeThechosensection(tt){
-    tt.style.border = "10px solid blue";
-    tt.style.borderRadius = "25px";
+    tt.classList.add("activeSection");
+   
 }
 
 
@@ -48,32 +45,48 @@ function activeThechosensection(tt){
 // Scroll to anchor ID using scrollTO event
 
 function scrollAndHighlight(links){
-
+console.log("inside");
 for(let link of links){
   link.addEventListener("click" , function(){
-    clearactivefromsection();
-    clearactivefromli();
     let togo = link.getAttribute("goto");
     tgt = document.querySelector(togo);
     tgt.scrollIntoView({
-            behavior: 'smooth',
+            behavior: 'auto',
             block: 'start'
         });
-    activeThechosenli(link)
-    activeThechosensection(tgt)
-    linkdefault = link;
-    tgtdefault  = tgt;
-    });
+    } );
   }
+}
+
+function hight() {
+    for (let i = 0; i < 4; i++) {
+       
+        let curr = document.querySelector(links_To_Jump[i]);
+        if (curr.getBoundingClientRect().top < 300) {
+            /*document.querySelector('nav').remove();
+            prtt = "#occp" + (i + 1);
+            buildthenav(prtt);
+            links = document.querySelectorAll("li");*/
+            clearactivefromsection();
+            clearactivefromli();
+            activeThechosenli(links[i]);
+            activeThechosensection(curr);
+            tgtdefault = curr;
+            linkdefault = links[i];
+
+        }
+    }
+
 }
 
 // build the nav
 
-function buildthenav(){
-  const S = document.querySelector('nav');
+function buildthenav(prtt){
+  const S = document.querySelector(prtt);
+  const child = document.createElement('nav');
+  S.appendChild(child);
   const ch = document.createElement('ul');
-  S.appendChild(ch);
-  const links_To_Jump = new Array ("#EP1" , "#EP2" , "#WB1" , "#WB2");
+  child.appendChild(ch);
   let prt = document.querySelector('ul');
   for(let i = 0 ; i < 4 ; i ++){
     let ch = document.createElement('li');
@@ -90,8 +103,8 @@ function buildthenav(){
   */
 
 // Build menu 
-
-buildthenav();
+prtt = "#fixed";
+buildthenav(prtt);
 
 // Scroll to section on link click
 // Set sections as active
@@ -102,5 +115,5 @@ scrollAndHighlight(links);
 
 
 
+window.addEventListener("scroll", hight);
 
- 

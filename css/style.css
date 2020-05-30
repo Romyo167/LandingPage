@@ -4,31 +4,108 @@ body{
 	background-color: rgb(74,155,88);
 }
 
+@media(min-width: 1px) and (max-width: 780px){
 .container{
 	display: grid;
-	grid-template-rows:200px 20000px 200px;
-	grid-template-columns: 1fr 2fr;
-	grid-template-areas: "hd hd" "lp ct" "ft ft";
+	grid-template-rows:300px 20000px 200px;
+	grid-template-columns: 1fr ;
+	grid-template-areas:  "lp"  "ct" "ft";
 }
 
-@media(min-width: 1100px) and (max-width: 1300px){
+ul{
+	display: flex;
+	flex-direction: column;
+	list-style-type: none;
+	align-items: stretch;
+	justify-content:space-between;
+	margin : 5px;
+    border:10px solid gray;
+    border-radius: 20px;
+    background-color: black;
+    padding:15px;
+}
+
+#fixed{
+	grid-area: lp;
+	position: fixed;
+	width:100%;
+	top:0px;
+}
+
+.occp{
+	width:100%;
+	height:300px;
+}
+}
+@media(min-width: 780px) and (max-width: 1024px){
 	.container{
 		display: grid;
-		grid-template-columns: 1fr 3fr;
-		grid-template-rows: 250px 4000px 300px;
-		grid-template-areas: "hd hd" "lp ct" "ft ft";
+		grid-template-columns: 1fr;
+		grid-template-rows:100px 4000px 300px;
+		grid-template-areas:  "lp"  "ct" "ft";
 	}
+	ul{
+	display: flex;
+	flex-direction: row;
+	list-style-type: none;
+	align-items: stretch;
+	justify-content:space-between;
+	margin : 15px;
+    border:10px solid gray;
+    border-radius: 20px;
+    background-color: black;
+    padding:15px;
 }
 
-@media(min-width: 1300px){
+
+#fixed{
+	grid-area: lp;
+	position: fixed;
+	width:100%;
+	top:0px;
+}
+
+.occp{
+	width:100%;
+	height:150px;
+}
+}
+
+@media(min-width: 1024px){
    .container{
    	  display: grid;
-   	  grid-template-columns: 1fr 4fr;
-	  grid-template-rows: 200px 2000px 200px;
-	  grid-template-areas: "hd hd" "lp ct" "ft ft";
+   	  grid-template-columns: 1fr;
+	  grid-template-rows:  100px 3000px 200px;
+	  grid-template-areas: "lp"  "ct" "ft";
    }
+   ul{
+	display: flex;
+	flex-direction: row;
+	list-style-type: none;
+	align-items: stretch;
+	justify-content:space-between;
+	margin : 15px;
+    border:10px solid gray;
+    border-radius: 20px;
+    background-color: black;
+    padding:15px;
 }
 
+
+#fixed{
+	grid-area: lp;
+	position: fixed;
+	width:100%;
+	top:0px;
+}
+
+.occp{
+	width:100%;
+	height:150px;
+}
+
+}
+/*
 .headdd{
 	grid-area: hd;
 	background-color: rgb(176 , 116 , 199);
@@ -51,7 +128,7 @@ body{
    border-radius: 20px;
    padding:15px;
    font-size: 20px;
-}
+}*/
 .content > p{
 	text-align: justify;
 	font-size: 17px;
@@ -60,25 +137,11 @@ body{
 
 .content{
 	grid-area: ct;
-	
 	background-color: rgb(157,83,156);
-    margin : 15px;
 	border : 0px solid none;
 	border-radius: 30px;
 }
 
-nav{
-   grid-area: lp;
-   background-color: rgb(184,130,204);
-   border: 0px solid none;
-   border-radius: 25px;
-   margin: 15px;
-   position: fixed;
-   width:200px;
-   height:300px;
-   left:30px;
-   top:200px;
-}
 
 .son{
 	margin-left :10px;
@@ -104,13 +167,38 @@ h3{
 li{
 	cursor: pointer;
 	line-height: 23px;
+	color:white;
+	font-size: 30px;
+	   line-height: 40px;
+	/*display: inline;*/
 }
 
-section{
+/*section{
 	padding : 15px;
-}
+}*/
 
 nav > h3{
 	font-size:16px;
 	text-align: center;
+}
+
+section > p{
+	padding:12px;
+}
+section > h2 {
+	padding: 8px;
+}
+
+.activeNavli{
+
+	background-color : rgb(50,130,204) ;
+    border : 5px solid gray;
+    border-radius : 10px;
+    width :auto;
+    padding : 5px;
+}
+
+.activeSection{
+	border : 10px solid blue;
+   border-radius : 25px;
 }
