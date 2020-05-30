@@ -63,10 +63,6 @@ function hight() {
        
         let curr = document.querySelector(links_To_Jump[i]);
         if (curr.getBoundingClientRect().top < 300) {
-            /*document.querySelector('nav').remove();
-            prtt = "#occp" + (i + 1);
-            buildthenav(prtt);
-            links = document.querySelectorAll("li");*/
             clearactivefromsection();
             clearactivefromli();
             activeThechosenli(links[i]);
